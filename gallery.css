@@ -1,0 +1,105 @@
+*,
+::before,
+::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: ;
+}
+body{
+    height: 100vh;
+}
+
+:has(div){
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    
+}
+div:has(p){
+    display: flex;
+    background-color: aquamarine;
+    width:clamp(250px,30vw,400px);
+    padding:2rem;
+    align-items: center;
+}
+.toggle{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    width: 2rem;
+    margin-inline: 1rem;
+}
+.toggle2{
+background-color: brown;
+border: none;
+padding: 1rem;
+order: 0;
+
+}
+.hamburger,.hamburger::before,.hamburger::after{
+    background-color: brown;
+    width: 100%;
+    height: 2px;
+    position: relative;
+    display: block;
+    transition: transform 500ms ease-in-out;
+}
+.hamburger::before{
+    content: "";
+    margin-top: -8px;
+    position: absolute;
+}
+.hamburger::after{
+    content: "";
+    margin-top: 8px;
+    position: absolute;
+}
+:is(p,p::before,p::after){
+    transition: transform opacity 500ms ease-in-out;
+}
+p::before,p::after{
+content: "";
+display: block;
+position: relative;
+color: bisque;
+width: 5rem;
+height: 2px;
+background-color: black;
+margin-inline: auto;
+margin-block: .5rem;
+}
+div:hover .toggle .hamburger::before{
+    transform: rotate(90deg) translateX(8px);
+}
+div:hover .toggle .hamburger{
+    transform: rotate(.625turn);
+}
+div:hover .toggle .hamburger::after{
+    opacity: 0;
+}
+div.test2 .toggle2{
+    transition: transform 500ms ease-in-out;
+}
+div:hover .toggle2{
+    transform: rotate(360deg);
+}
+div:hover p::before{
+    transform: translateX(100%) rotate(90deg);
+    opacity: 0.3;
+}
+div:hover p::after{
+    transform: translateX(-100%) scale(1.1);
+}
+p::after{
+    content: "";
+    display: block;
+    position: relative;
+    color: rgb(125,125,227);
+    width: 5rem;
+    background-color: black;
+    height: 2px;
+    margin-inline: auto;
+    margin-block: 0.5rem;
+}
